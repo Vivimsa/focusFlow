@@ -14,4 +14,8 @@ class User extends Model
         'email',
         'password',
     ];
+
+    protected function setEmailAttribute($value){
+        $this->attributes['email'] = strtolower($value);
+    }
 }
