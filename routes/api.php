@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MetasController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,4 @@ use Illuminate\Support\Facades\Route;
 //})->middleware('auth:sanctum');
 
 Route::apiResource('/user', UserController::class);
+Route::apiResource('/metas', MetasController::class);

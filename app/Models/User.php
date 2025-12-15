@@ -18,4 +18,8 @@ class User extends Model
     protected function setEmailAttribute($value){
         $this->attributes['email'] = strtolower($value);
     }
+
+    protected $hidden = [
+      'password',
+    ];
 }
