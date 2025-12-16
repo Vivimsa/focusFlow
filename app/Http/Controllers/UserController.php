@@ -8,6 +8,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     * path="/api/user",
+     * summary="Lista todos os usuários",
+     * tags={"Usuários"},
+     * @OA\Response(
+     * response=200,
+     * description="Lista de usuários retornada com sucesso."
+     * )
+     * )
+     */
     public function index()
     {
         return response()->json(User::all());
