@@ -21,7 +21,7 @@ class MetasController extends Controller
     public function store(Request $request)
     {
         $metas = Metas::create([
-            'user_id' => $request->user_id,
+            'user_id' => auth()->id(),
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
             'prioridade' => $request->prioridade,
