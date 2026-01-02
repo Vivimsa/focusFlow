@@ -54,7 +54,7 @@ class MetasController extends Controller
             return response()->json(['message' => 'Meta não encontrada'], 404);
         }
 
-        $metas->user_id = $request->user_id;
+        $metas->user_id = auth()->id();
         $metas->titulo = $request->titulo;
         $metas->descricao = $request->descricao;
         $metas->prioridade = $request->prioridade;
