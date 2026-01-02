@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('descricao')->nullable();
             $table->timestamp('concluida_em')->nullable();
             $table->date('data_expiracao')->nullable();
+            $table->string('status')->default('a_fazer');
             $table->timestamps();
             $table->index(['user_id', 'concluida_em']);
         });
