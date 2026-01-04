@@ -13,7 +13,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/tarefas',TarefaController::class);
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/user/{id}', [UserController::class, 'show']);
-    Route::put('/user/{id}', [UserController::class, 'update']);
-    Route::delete('/user/{id}', [UserController::class, 'destroy']);
+    Route::put('/user', [UserController::class, 'update']);
+    Route::delete('/user', [UserController::class, 'destroy']);
 });
 

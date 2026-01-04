@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum StatusTarefa: string
+enum StatusTarefaEnum: string
 {
     case A_FAZER = 'a_fazer';
     case FAZENDO = 'fazendo';

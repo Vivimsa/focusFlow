@@ -37,10 +37,10 @@ class MetasController extends Controller
      */
     public function show(string $id)
     {
-        $metas = Metas::find($id);
-        if(!$metas){
-            return response()->json(['message' => 'Meta não encontrada'], 404);
-        }
+        $metas = Metas::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->first();
+
         return response()->json($metas);
     }
 
@@ -49,20 +49,17 @@ class MetasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $metas = Metas::find($id);
-        if(!$metas){
-            return response()->json(['message' => 'Meta não encontrada'], 404);
-        }
+        $metas = Metas::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->update([
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'prioridade' => $request->prioridade,
+                'data_expiracao' => $request->data_expiracao,
+                'concluida_em' => $request->concluida_em,
+            ]);
 
-        $metas->user_id = auth()->id();
-        $metas->titulo = $request->titulo;
-        $metas->descricao = $request->descricao;
-        $metas->prioridade = $request->prioridade;
-        $metas->data_expiracao = $request->data_expiracao;
-        $metas->concluida_em = $request->concluida_em;
-        $metas->save();
-
-        return response()->json($metas,200);
+        return response()->json($metas);
     }
 
     /**
@@ -70,11 +67,10 @@ class MetasController extends Controller
      */
     public function destroy(string $id)
     {
-        $meta = Metas::find($id);
-        if(!$meta){
-            return response()->json(['message' => 'Meta não encontrada'], 404);
-        }
-        $meta->delete();
+        Metas::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->delete();
+
         return response()->json(['message' => 'Meta deletada com sucesso']);
     }
 }

@@ -22,6 +22,7 @@ class UserController extends Controller
      * )
      * )
      */
+
     public function index()
     {
         return response()->json(User::all());
@@ -61,38 +62,23 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::find($id);
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado'], 404);
-        }
-
+        $user = User::find(auth()->id());
         return response()->json($user);
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request)
     {
-        $user = User::find($id);
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado'], 404);
-        }
-
+        $user = auth()->user();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-
         $user->save();
-
         return response()->json($user);
     }
-    public function destroy($id)
+    public function destroy()
     {
-        $user = User::find($id);
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado'], 404);
-        }
-
+        $user = auth()->user();
         $user->delete();
-
         return response()->json(['message' => 'Usuário deletado com sucesso']);
     }
 }

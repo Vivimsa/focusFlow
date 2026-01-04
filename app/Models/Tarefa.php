@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use App\Enums\StatusTarefa;
+use App\Enums\StatusTarefaEnum;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin IdeHelperTarefa
+ */
 class Tarefa extends Model
 {
     protected $table = 'tarefas';
@@ -22,6 +25,6 @@ class Tarefa extends Model
     protected $casts = [
         'concluida_em' => 'datetime',
         'data_expiracao' => 'date',
-        'status' => StatusTarefa::class
+        'status' => StatusTarefaEnum::class
     ];
 }

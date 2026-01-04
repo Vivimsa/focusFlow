@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\StatusTarefa;
+use App\Enums\StatusTarefaEnum;
 use App\Models\Tarefa;
+use App\Models\Metas;
 use Illuminate\Http\Request;
 
 class TarefaController extends Controller
@@ -20,9 +21,17 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
+        $meta = Metas::where('id', $request->meta_id)
+            ->where('user_id',auth()->id())
+            ->first();
+
+        if(!$meta) {
+            return response()->json(['error' => 'Meta não encontrada'], 404);
+        }
+
         $tarefa = Tarefa::create([
             'user_id' => auth()->id(),
-            'meta_id' => $request->meta_Id,
+            'meta_id' => $request->meta_id,
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
             'concluida_em' => $request->concluidaEm,
@@ -37,10 +46,9 @@ class TarefaController extends Controller
      */
     public function show(string $id)
     {
-        $metaTarefas = Tarefa::find($id);
-        if(!$metaTarefas){
-            return ('Meta sem tarefa');
-        }
+        $metaTarefas = Tarefa::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->first();
 
         return response()->json($metaTarefas);
     }
@@ -50,17 +58,17 @@ class TarefaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $tarefa = Tarefa::find($id);
-        $tarefa->meta_id = $request->meta_id;
-        $tarefa->titulo = $request->titulo;
-        $tarefa->descricao = $request -> descricao;
-        $tarefa->concluida_em = $request -> concluidaEm;
-        $tarefa->data_expiracao = $request-> data_expiracao;
-        $tarefa->save();
+        $tarefa = Tarefa::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->update([
+                'meta_id' => $request->meta_id,
+                'titulo' => $request->titulo,
+                'descricao' => $request->descricao,
+                'concluida_em' => $request->concluidaEm,
+                'data_expiracao' => $request->data_expiracao,
+            ]);
 
-        return response()->json([
-            "message" => "Tarefa alterada com sucesso!",
-            "tarefa" => $tarefa]);
+        return response()->json($tarefa);
     }
 
     /**
@@ -68,8 +76,9 @@ class TarefaController extends Controller
      */
     public function destroy(String $id)
     {
-        $tarefa = Tarefa::find($id);
-        $tarefa->delete();
+        Tarefa::where('id',$id)
+            ->where('user_id',auth()->id())
+            ->delete();
 
         return response()->json('Tarefa removida com sucesso!');
     }
