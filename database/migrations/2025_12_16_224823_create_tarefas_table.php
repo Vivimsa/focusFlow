@@ -21,7 +21,6 @@ return new class extends Migration
             $table->date('data_expiracao')->nullable();
             $table->string('status')->default('a_fazer');
             $table->timestamps();
-            $table->index(['user_id', 'concluida_em']);
             $table->softDeletes();
         });
     }

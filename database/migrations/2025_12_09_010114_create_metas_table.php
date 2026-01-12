@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('descricao');
             $table->tinyInteger('prioridade')->unsigned()->default(1);
             $table->date('data_expiracao');
-            $table->datetime('concluida_em');
+            $table->datetime('concluida_em')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

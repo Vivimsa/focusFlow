@@ -38,7 +38,7 @@ class TarefaController extends Controller
             'data_expiracao' => $request->dataExpiracao
         ]);
 
-        return response()->json($tarefa, 201);
+        return response()->json($tarefa);
     }
 
     /**

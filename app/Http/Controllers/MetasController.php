@@ -69,7 +69,7 @@ class MetasController extends Controller
     {
         Meta::where('id',$id)
             ->where('user_id',auth()->id())
-            ->delete();
+            ->softDelete();
 
         return response()->json(['message' => 'Meta deletada com sucesso']);
     }
