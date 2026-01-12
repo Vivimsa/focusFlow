@@ -29,4 +29,14 @@ class User extends Authenticatable
     protected $hidden = [
       'password',
     ];
+
+    public function metas()
+    {
+        return $this->hasMany(Meta::class);
+    }
+
+    public function tarefas()
+    {
+        return $this->hasMany(Tarefa::class);
+    }
 }

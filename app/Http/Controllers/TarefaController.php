@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\StatusTarefaEnum;
 use App\Models\Tarefa;
-use App\Models\Metas;
+use App\Models\Meta;
 use Illuminate\Http\Request;
 
 class TarefaController extends Controller
@@ -21,7 +21,7 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $meta = Metas::where('id', $request->meta_id)
+        $meta = Meta::where('id', $request->meta_id)
             ->where('user_id',auth()->id())
             ->first();
 

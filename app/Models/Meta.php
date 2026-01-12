@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin IdeHelperMetas
  */
-class Metas extends Model
+class Meta extends Model
 {
     use HasFactory;
 

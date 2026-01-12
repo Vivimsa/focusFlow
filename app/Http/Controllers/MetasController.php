@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Metas;
+use App\Models\Meta;
 use Illuminate\Http\Request;
 
 class MetasController extends Controller
@@ -12,7 +12,7 @@ class MetasController extends Controller
      */
     public function index()
     {
-        return response()->json(Metas::all());
+        return response()->json(Meta::all());
     }
 
     /**
@@ -20,7 +20,7 @@ class MetasController extends Controller
      */
     public function store(Request $request)
     {
-        $metas = Metas::create([
+        $metas = Meta::create([
             'user_id' => auth()->id(),
             'titulo' => $request->titulo,
             'descricao' => $request->descricao,
@@ -37,7 +37,7 @@ class MetasController extends Controller
      */
     public function show(string $id)
     {
-        $metas = Metas::where('id',$id)
+        $metas = Meta::where('id',$id)
             ->where('user_id',auth()->id())
             ->first();
 
@@ -49,7 +49,7 @@ class MetasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $metas = Metas::where('id',$id)
+        $metas = Meta::where('id',$id)
             ->where('user_id',auth()->id())
             ->update([
                 'titulo' => $request->titulo,
@@ -67,7 +67,7 @@ class MetasController extends Controller
      */
     public function destroy(string $id)
     {
-        Metas::where('id',$id)
+        Meta::where('id',$id)
             ->where('user_id',auth()->id())
             ->delete();
 

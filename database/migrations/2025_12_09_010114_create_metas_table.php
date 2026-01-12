@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('data_expiracao');
             $table->datetime('concluida_em');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

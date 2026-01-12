@@ -22,18 +22,18 @@ namespace App\Models{
  * @property string $concluida_em
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereConcluidaEm($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereDataExpiracao($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereDescricao($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas wherePrioridade($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereTitulo($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Metas whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereConcluidaEm($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereDataExpiracao($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereDescricao($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta wherePrioridade($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereTitulo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meta whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
