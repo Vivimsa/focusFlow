@@ -53,6 +53,15 @@ class TarefaController extends Controller
         return response()->json($metaTarefas);
     }
 
+    public function listaTarefasPorMeta(string $metaId)
+    {
+        $tarefas = Tarefa::where('meta_id', $metaId)
+            ->where('user_id', auth()->id())
+            ->get();
+
+        return response()->json($tarefas);
+    }
+
     /**
      * Update the specified resource in storage.
      */

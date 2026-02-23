@@ -11,6 +11,7 @@ Route::post('/user', [UserController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/metas', MetasController::class);
     Route::apiResource('/tarefas',TarefaController::class);
+    Route::get('tarefas_por_meta/{metaId}', [TarefaController::class, 'listaTarefasPorMeta']);
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/user/{id}', [UserController::class, 'show']);
     Route::put('/user', [UserController::class, 'update']);
